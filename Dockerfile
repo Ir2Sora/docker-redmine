@@ -26,11 +26,11 @@ RUN cd /usr/local && \
 	git clone -q --depth=1 -b $RM_VERSION https://github.com/redmine/redmine.git && \
  	cd redmine && \
 	rm -rf .git
+
 WORKDIR /usr/local/redmine
+VOLUME /usr/local/redmine/log
+VOLUME /usr/local/redmine/files
+
 COPY database.yml /usr/local/redmine/config/
 RUN bundle install --without development test rmagick postgresql sqlite --quiet
-RUN rake generate_secret_token 
-
-
-
-
+RUN rake generate_secret_token
