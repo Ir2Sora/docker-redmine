@@ -8,7 +8,6 @@ ENV RAILS_VERSION 3.2.21
 
 RUN apt-get -qq update && apt-get install -y -qq \
 	git \
-	software-properties-common \
 	libmysqlclient-dev \
 	make \
 	ruby$RUBY_VERSION
@@ -24,9 +23,13 @@ RUN cd /usr/local && \
 	rm -rf .git
 
 WORKDIR /usr/local/redmine
-VOLUME /usr/local/redmine/log
-VOLUME /usr/local/redmine/files
 
 COPY database.yml /usr/local/redmine/config/
+COPY internal-init.sh /usr/local/redmine/
+
 RUN bundle install --without development test rmagick postgresql sqlite --quiet
 RUN rake generate_secret_token
+
+VOLUME /usr/local/redmine/log
+VOLUME /usr/local/redmine/files
+VOLUME /usr/local/redmine/plugins
