@@ -1,23 +1,19 @@
 FROM ubuntu:14.04
 MAINTAINER ir2sora ir2sora@gmail.com
 
-ENV REFRESHED_AT 2015-04-06
-ENV RM_VERSION 2.3.0
-ENV RUBY_VERSION 1.8
-ENV RAILS_VERSION 3.2.13
+ENV REFRESHED_AT 2015-07-01
+ENV RM_VERSION 2.6.3
+ENV RUBY_VERSION 1.9.3
+ENV RAILS_VERSION 3.2.21
 
 RUN apt-get -qq update && apt-get install -y -qq \
 	git \
 	software-properties-common \
-	libmysqlclient-dev
+	libmysqlclient-dev \
+	make \
+	ruby$RUBY_VERSION
 
-
-# install RVM, Ruby, Rails, and Bundler
-RUN apt-add-repository ppa:brightbox/ruby-ng && \
-	apt-get -qq update && apt-get install -y -qq \
-	ruby$RUBY_VERSION \
-	rubygems$RUBY_VERSION \
-	ruby-switch
+# install Rails, and Bundler
 RUN gem install rails -v $RAILS_VERSION --no-rdoc --no-ri -q
 RUN gem install bundler --no-rdoc --no-ri -q
 
