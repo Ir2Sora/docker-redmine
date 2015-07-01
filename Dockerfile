@@ -10,7 +10,8 @@ RUN apt-get -qq update && apt-get install -y -qq \
 	git \
 	libmysqlclient-dev \
 	make \
-	ruby$RUBY_VERSION
+	ruby$RUBY_VERSION \ 
+	ruby-mysql2
 
 # install Rails, and Bundler
 RUN gem install rails -v $RAILS_VERSION --no-rdoc --no-ri -q
