@@ -24,7 +24,6 @@ RUN cd /usr/local && \
 WORKDIR /usr/local/redmine
 
 COPY database.yml /usr/local/redmine/config/
-COPY internal-init.sh /usr/local/redmine/
 
 RUN bundle install --without development test rmagick postgresql sqlite --quiet
 RUN rake generate_secret_token
