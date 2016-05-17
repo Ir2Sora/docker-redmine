@@ -6,4 +6,4 @@ then
 fi
 
 docker start mysql-redmine
-docker run --link mysql-redmine:mysql --rm -p 3000:3000 --name redmine ir2sora/redmine:2.6.3 ruby script/rails server webrick -e production
+docker run --link mysql-redmine:mysql --rm -p 3000:3000 --name redmine ir2sora/redmine:3.2.2 rails server webrick -e production -b "0.0.0.0"

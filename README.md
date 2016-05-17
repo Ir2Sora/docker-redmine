@@ -1,4 +1,4 @@
-# Redmine 2.6.3 - Ruby 1.9.3
+# Redmine 3.2.2 - Ruby 1.9.3
 
 Run:
 
