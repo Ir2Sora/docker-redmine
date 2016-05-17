@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker run --name mysql-redmine --env MYSQL_ROOT_PASSWORD=mysqlpw -d mysql:5.5
+docker run --name mysql-redmine --env MYSQL_ROOT_PASSWORD=mysqlpw -d mysql:5.7.12
 docker run --link mysql-redmine:waitcontainer --rm aanand/wait
 
 # init db
